@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    /* 清除浏览器默认边距 */
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .wrap {
+      display: flex;
+    }
+    .left {
+      height: 200px;
+      background: purple;
+      width:100px;
+    }
+    .right {
+      background: skyblue;
+      height: 200px;
+      flex: 1;
+    }
+  </style>
+  <div class="wrap">
+    <div class="left">
+      左侧固定内容
+    </div>
+    <div class="right">
+      右侧内容自适应
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const allTag = [...document.getElementsByTagName('*')];
+        console.log('所有的标签', allTag);
+        const allTagMap = allTag.map((item, index)=>{
+            return (item.tagName)
+        });
+        var obj = {};
+        allTagMap.map((item, index)=>{
+            if(item in obj){
+                obj[item]+=1;
+            }else{
+                obj[item]=1;
+            }
+        });
+        function sortTag(obj){
+            return Object.keys(obj).sort((a,b)=>obj[b]-obj[a]); // 按照其属性值进行排列
+        }
+        var resultSortTag = sortTag(obj);
+        var theFirstsThree = {};
+        for(var i = 0; i<3; i++){
+            var qian = resultSortTag[i];
+            theFirstsThree[qian] = obj[qian];
+        }
+        console.log('前三个标签是：', theFirstsThree);
+    </script>
+</body>
+</html>

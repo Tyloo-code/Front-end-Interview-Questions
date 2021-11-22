@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    .blueball{
+      width: 100px;
+      height: 100px;
+      background: #bfa;
+      border-radius: 50%;
+
+      opacity: 1; /* 不透明 */
+      transition: opacity 1s;  /* 改变 opacity 属性，持续1秒 */
+    }
+    .blueball:hover{
+      opacity: 0.3; /* 透明度 30% */
+    }
+
+    .blueball1{
+      width: 100px;
+      height: 100px;
+      background: #0080ff;
+      border-radius: 50%;
+      position: relative;
+      animation: forward 4s;/* 执行 forward 动画，耗时 4s */
+    }
+    /* 三个关键帧： 起点（蓝色），蓝变绿，终点（橙色） */
+    @keyframes forward{
+      0% {left: 0;}
+      50% {left: 200px; background-color: #009a61;}
+      100% {left: 400px; background-color: orange;}
+    }
+  </style>
+  <div class="blueball"></div>
+  <div class="blueball1"></div>
+  
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>居中</title>
+</head>
+<body>
+  <style>
+    .outer{
+      width: 300px;
+      height: 300px;
+      background-color: lightblue;
+      text-align: center;  
+    }
+    .sp{
+      display: inline-block;
+      padding-bottom: 20px;
+    }
+    .dv{
+      width: 200px;
+      height: 200px;
+      background-color: #bfa;
+      margin: 0 auto;
+    }
+    .outer1{
+      width: 300px;
+      height: 100px;
+      line-height: 100px;
+      background-color: yellow;
+    }
+    .inner{
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border: solid;
+    }
+    .dv1{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background-color: pink;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+  <div class="outer">
+    <span class="sp">内联样式 水平居中</span>
+    <div class="dv">块级元素 水平居中</div>
+  </div>
+  <div class="outer1">
+    <span class="sp1">内联样式 垂直居中</span>
+    <div class="inner">
+      <div class="dv1">块级元素 垂直居中</div>
+    </div>   
+  </div>
+
+</body>
+</html>

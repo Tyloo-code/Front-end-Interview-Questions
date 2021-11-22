@@ -1,0 +1,185 @@
+<!-- 两边固定  当中自适应 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三列布局</title>
+    <style>
+         *{
+             margin: 0;
+             padding:0;
+         }
+         .layout{
+             margin-top: 3.125rem;
+         }
+         .layout article div{
+             min-height: 6.25rem;
+         }
+      </style>
+</head>
+<body>
+    <!-- 浮动布局解决方案 -->
+    <section class="layout float">
+        <style>
+            .float .left{
+                float: left;
+                width: 18.75rem;
+                background: red;
+            }
+            .float .right{
+                float: right;
+                width: 18.75rem;
+                background: red;
+            }
+            .float .center{
+                background: yellow;
+            }
+        </style>
+        <article class="left-center-right">
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="center">
+                <h1>浮动布局解决方案</h1>
+                <p>这里是布局中间部分</p>
+                <p>这里是布局中间部分</p>
+            </div>
+        </article>
+    </section>
+ 
+    <section class="layout absolute">
+        <!-- 绝对定位方案 -->
+        <style>
+            .absolute  .left-center-right>div{
+                position: absolute;
+            }
+            .absolute .left{
+                left: 0rem;
+                width: 18.75rem;
+                background: red;
+            }
+            .absolute .right{
+                right: 0rem;
+                width: 18.75rem;
+                background: red;
+            }
+            .absolute .center{
+                left: 18.75rem;
+                right: 18.75rem;
+                background: yellow;
+            }
+        </style>
+        <article class="left-center-right">
+                <div class="left"></div>
+                <div class="right"></div>
+                <div class="center">
+                    <h1>绝对定位布局解决方案</h1>
+                    <p>这里是布局中间部分</p>
+                    <p>这里是布局中间部分</p>
+                </div>
+        </article>
+    </section>
+    <!-- flex布局方案 -->
+    <section class="layout flexbox">
+            <style>
+                .flexbox{
+                    margin-top: 200px;
+                }
+ 
+                .flexbox .left-center-right{
+                    display: flex;
+                }
+                .flexbox .left{
+                    width: 18.75rem;
+                    background: red;
+                }
+                .flexbox .center{
+                    flex: 1;
+                    /* 让中间部分适配整个宽度 */
+                    background: yellow;
+                }
+                .flexbox .right{
+                    width: 18.75rem;
+                    background: red;
+                }
+            </style>
+            <article class="left-center-right">
+                    <div class="left"></div>
+                    <div class="center">
+                            <h1>flexbox布局解决方案</h1>
+                            <p>这里是布局中间部分</p>
+                            <p>这里是布局中间部分</p>
+                        </div>
+                    <div class="right"></div>
+                    
+            </article>
+    </section>
+    <!-- 表格布局方案-->
+    <section class="layout table">
+        <style>
+            .table .left-center-right{
+                display: table;
+                width: 100%;
+                height: 100px;
+            }
+            .table .left-center-right>div{
+                display: table-cell;
+            }
+            .table .left{
+                width: 18.75rem;
+                background-color: red;
+ 
+            }
+            .table .center{
+                background-color: yellow;
+            }
+            .table .right{
+                width: 18.75rem;
+                background-color: red;
+                
+            }
+        </style>
+        <article class="left-center-right">
+                <div class="left"></div>
+                <div class="center">
+                        <h1>table布局解决方案</h1>
+                        <p>这里是布局中间部分</p>
+                        <p>这里是布局中间部分</p>
+                    </div>
+                <div class="right"></div>
+        </article>
+    </section>
+    <!-- 网络布局解决方案 -->
+    <section class="layout grid">
+        <style>
+            .grid .left-center-right{
+                display: grid;
+                width: 100%;
+                grid-template-rows: 100px;
+                grid-template-columns: 18.75rem auto 18.75rem;
+ 
+            }
+            .grid .left{
+                background: red;
+            }
+            .grid .center{
+                background: yellow;
+            }
+            .grid .right{
+                background: red;
+            }
+            
+        </style>
+        <article class="left-center-right">
+                <div class="left"></div>
+                <div class="center">
+                        <h1>网格布局解决方案</h1>
+                        <p>这里是布局中间部分</p>
+                        <p>这里是布局中间部分</p>
+                    </div>
+                <div class="right"></div>
+        </article>
+    </section>
+</body>
+</html>

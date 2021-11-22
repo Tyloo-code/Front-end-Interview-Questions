@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    body {
+      background: #eee;
+    }
+
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      margin: -150px;
+      perspective: 500px; /* 透视距离 500px */
+    }
+
+    .content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      transition: transform 1s;
+      transform-style: preserve-3d; /* 容器为3D空间 */
+      /* transform-style: flat; 默认值，容器为2D空间，相当于舍弃了背面卡片 */
+    }
+
+    .card:hover .content {
+      transform: rotateY( 180deg ) ;
+    }
+
+    .front,
+    .back {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      border-radius: 5px;
+      backface-visibility: hidden; /* 隐藏背面 */
+    }
+
+    .back {
+      transform: rotateY( 180deg ); /* 反面卡片翻转和正面卡片贴合 */
+    }
+  </style>
+  <div class="card">
+    <div class="content">
+      <img class="front" src="http://p3.pstatp.com/large/pgc-image/152876329845594aa3aebf5" alt="周一的我">
+      <img class="back" src="http://p3.pstatp.com/large/pgc-image/15287632984829b0ed8bc23" alt="周五的我">
+    </div>
+  </div>
+</body>
+</html>

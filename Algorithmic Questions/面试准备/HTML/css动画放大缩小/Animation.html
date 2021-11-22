@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation</title>
+  <style>
+    #animat{
+        height: 35px;
+        width:300px;
+        background:orangered;
+        border-radius: 4px;
+        position:relative;
+        left: 100px;
+
+        animation:mymove 5s infinite;
+        animation-direction:alternate;/*轮流反向播放动画。*/
+        animation-timing-function: ease-in-out; /*动画的速度曲线*/
+    }
+    @keyframes mymove
+    {
+        0%{   transform: scale(1);  /*开始为原始大小*/     }
+        25%{  transform: scale(1.5); /*放大1.1倍*/        }
+        50%{  transform: scale(1);                       }
+        75%{  transform: scale(1.5);                     }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div id="animat"></div>
+  </div>
+</body>
+</html>

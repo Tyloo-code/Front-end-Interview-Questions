@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>position三栏</title>
+</head>
+<body>
+  <style>
+    .outer{
+      position: relative;
+    }
+    .inner{
+      position: absolute;
+      top: 0;
+      height: 300px;
+      background-color: orange;
+    }
+    .left{
+      left: 0;
+      width: 300px;
+    }
+    .right{
+      right: 0;
+      width: 300px;
+    }
+    .mid{
+      left: 300px;
+      right: 300px;
+      background-color: lightblue;
+    }
+  </style>
+  <div class="outer">
+    <div class="inner left"></div>
+    <div class="inner mid"></div>
+    <div class="inner right"></div>
+  </div>
+</body>
+</html>

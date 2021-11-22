@@ -1,0 +1,47 @@
+<!-- Vue num加减 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue num加减</title>
+<script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <button v-on:click="add(10)">click me</button>
+  <button v-on:click="remove(5)">click me</button>
+  <button v-on:click="num++">click me</button>
+  <button v-on:click="num--">click me</button>
+  <span>{{num}}</span>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      num:0,
+      message: '6',
+      data: {
+        name: '',
+        gender: '',
+        interest: [],
+        identity: ''
+      },
+      selected: 'A',
+      options: [
+        { text: 'One', value: 'A' },
+        { text: 'Two', value: 'B' },
+        { text: 'Three', value: 'C' }
+      ]
+    },
+    methods:{
+      add:function (inc){
+        this.num += inc;
+     },
+      remove:function (dec){
+        this.num -= dec;
+      },
+    }
+  })
+</script>
+</body>
+</html>

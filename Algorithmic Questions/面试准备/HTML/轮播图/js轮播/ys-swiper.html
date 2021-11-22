@@ -1,0 +1,200 @@
+<!-- 轮播图 五张 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图(图片400*600)</title>
+    <style>
+      /* 　首先，resetcss，如下所示： */
+        * {
+            margin:0;
+            padding:0;
+        }
+        a{
+            text-decoration: none;
+        }
+        /* 　接着，我们为了让图片只在container中，所以需要限定其宽度和高度并且使用overflow:hidden；
+        将其余的图片隐藏起来，并且我们希望wrap相对于container左右移动，所以设置为relative，如下： */
+        .container {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin:100px auto 0 auto;
+            box-shadow: 0 0 5px green;
+            overflow: hidden;
+        }
+        /* 我们设置wrap是绝对定位的，所以,我们就可以通过控制Left和Right来控制图片的移动了。设置z-index:1;以对后面将要放置的buttons作为参考。 因为共有七张图片，所以width为4200px
+        （每张图片我们设置为600X400）,我们只需让图片左浮动即可实现占满一排了。 */
+        .container .wrap {
+            position: absolute;
+            width: 4200px;
+            height: 400px;
+            z-index: 1;
+        }
+        /* 然后我们把图片设置位左浮动，并限定其大小，如下所示： */
+        .container .wrap img {
+            float: left;
+            width: 600px;
+            height: 400px;
+        }
+        /* 即这时已经显示出了第一张图片。并且充满了整个container(container是有box-shadow的);
+　　然后我们把显示次序的buttons放在图片的右下角。并且设置z-index:2;以保证buttons是在图片的上面的。*/
+        .container .buttons {
+            position: absolute;
+            right: 5px;
+            bottom:40px;
+            width: 150px;
+            height: 10px;
+            z-index: 2;
+        }
+        /* 然后将buttons下面的span做一个简单的修饰，并且给和图片对应的span设置一个on类，如下： */
+        .container .buttons span {
+            margin-left: 5px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: green;
+            text-align: center;
+            color:white;
+            cursor: pointer;
+        }
+        .container .buttons span.on{
+            background-color: red;
+        }
+        /* 接下来，我们把左右切换的箭头加上，然后做简单的修饰，注意：因为这里使用实体来表示左右箭头，所以设置font-size才能改变其大小， */
+        .container .arrow {
+            position: absolute;
+            top: 35%;
+            color: green;
+            padding:0px 14px;
+            border-radius: 50%;
+            font-size: 50px;
+            z-index: 2;
+            display: none;
+        }
+        .container .arrow_left {
+            left: 10px;
+        }
+        .container .arrow_right {
+            right: 10px;
+        }
+        .container:hover .arrow {
+            display: block;
+        }
+        .container .arrow:hover {
+            background-color: rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="wrap" style="left: -600px;">
+            <img src="./img/5.jpg" alt="">
+            <img src="./img/1.jpg" alt="">
+            <img src="./img/2.jpg" alt="">
+            <img src="./img/3.jpg" alt="">
+            <img src="./img/4.jpg" alt="">
+            <img src="./img/5.jpg" alt="">
+            <img src="./img/1.jpg" alt="">
+        </div>
+        <div class="buttons">
+            <span class="on">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+        <a href="javascript:;" class="arrow arrow_left">&lt;</a>
+        <a href="javascript:;" class="arrow arrow_right">&gt;</a>
+    </div>
+    <script>
+      // 我们首先获取到 wrap（因为要设置其left才能控制轮播图），然后获取到左右两个箭头，并实现手动轮播，如下：
+        var wrap = document.querySelector(".wrap");
+        var next = document.querySelector(".arrow_right");
+        var prev = document.querySelector(".arrow_left");
+        next.onclick = function () {
+            next_pic();
+        }
+        prev.onclick = function () {
+            prev_pic();
+        }
+    // 也就是说，当我们点击下一张到-3600px（这是第一张图片）时，我们需要下次跳转到第二张，即-1200px；这样才能正常跳转；
+　　// 同理，当我们点击上一张到0px（这是第五张图片时），我们希望下次跳转到第四张，即-2400px；
+　　// 按照这样的思路我们重新将next_pic和prev_pic函数修改如下：
+        function next_pic () {
+            index++;
+            if(index > 4){
+                index = 0;
+            }
+            showCurrentDot();
+            var newLeft;
+            if(wrap.style.left === "-3600px"){
+                newLeft = -1200;
+            }else{
+                newLeft = parseInt(wrap.style.left)-600;
+            }
+            wrap.style.left = newLeft + "px";
+            // 值得注意的是，这里wrap.style.left是一个字符串，所以要转化为数字才能进行计算，而设定left时就要加上px成为一个字符串了。
+        }
+        function prev_pic () {
+            index--;
+            if(index < 0){
+                index = 4;
+            }
+            showCurrentDot();
+            var newLeft;
+            if(wrap.style.left === "0px"){
+                newLeft = -2400;
+            }else{
+                newLeft = parseInt(wrap.style.left)+600;
+            }
+            wrap.style.left = newLeft + "px";
+        }
+        //我们如果希望自动播放，使用setInterval()即可，如下所示：
+        var timer = null;
+        function autoPlay () {
+            timer = setInterval(function () {
+                next_pic();
+            },2000);
+        }
+        autoPlay();
+        // 　　但是如果我们想要仔细看其中一个图片的时候，我们希望轮播图停止播放，只要clearInterval()即可，如下：
+        var container = document.querySelector(".container");
+        container.onmouseenter = function () {
+            clearInterval(timer);
+        }
+        container.onmouseleave = function () {
+            autoPlay();    
+        }
+        // 原理很简单，即设置buttons的index初始值为0，即第一个span的class为on，然后触发next_pic函数时，index加1，当触发prev_pic函数时，inex减1， 并设置当前index的小圆点的class为on， 这就要求index必须设置为全局变量，才能保证它在每一个函数的作用域中。
+        var index = 0;
+        var dots = document.getElementsByTagName("span");
+        function showCurrentDot () {
+            for(var i = 0, len = dots.length; i < len; i++){
+                dots[i].className = "";
+            }
+            dots[index].className = "on";
+        }
+        // 当点击小圆点时， 就可跳转到相应图片。 实现原理即：  点击小圆点，就使wrap的Left变成相应的值。
+        for (var i = 0, len = dots.length; i < len; i++){
+            (function(i){
+                dots[i].onclick = function () {
+                    var dis = index - i;
+                    if(index == 4 && parseInt(wrap.style.left)!==-3000){
+                        dis = dis - 5;     
+                    }
+                    //和使用prev和next相同，在最开始的照片5和最终的照片1在使用时会出现问题，导致符号和位数的出错，做相应地处理即可
+                    if(index == 0 && parseInt(wrap.style.left)!== -600){
+                        dis = 5 + dis;
+                    }
+                    wrap.style.left = (parseInt(wrap.style.left) +  dis * 600)+"px";
+                    index = i;
+                    showCurrentDot();
+                }
+            })(i);            
+        }
+        // 原理就是当点击到小圆点时，得到相应的i值，这个i值也就是span的index值，我们拿他和全局变量index作比较，然后重新设置wrap.style.left的值，然后把i值复制给全局变量index，最后显示当前的小原点即可。值得注意的是：这里涉及到了闭包的概念，如果直接使用for循环，则不能得到正确的结果。
+    </script>
+</body>
+</html>

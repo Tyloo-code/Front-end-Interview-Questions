@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<div id="box">
+    <h3>1</h3>
+    <h3>2</h3>
+    <h3>3</h3>
+</div>
+<script>
+ var oBox = document.getElementById("box");
+        var oH3 = document.querySelectorAll("h3");
+        oH3[0].innerHTML = "<a>我是修改后的文本节点的内容</a>"
+console.log(oH3[0])
+
+</script>
+</body>
+</html>

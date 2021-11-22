@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>翻转数组</title>
+</head>
+<body>
+  <div id="app">Hello Nowcoder</div>
+  <script>
+    Array.prototype.myReserve = function(){
+      for(let i = 0; i < this.length / 2; i++){
+        let temp = this[i];
+        this[i] = this[this.length - i - 1];
+        this[this.length - i - 1] = temp;
+      }
+      return this;
+    }
+    document.getElementById('app').innerText = ([1,2,3,4].myReserve())
+  </script>
+</body>
+</html>

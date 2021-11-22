@@ -1,0 +1,60 @@
+<!-- 三栏布局 左右自适应 中间固定 -->
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CSS</title>
+<style type="text/css">
+body{padding:0;margin:0;}
+div{
+    height:100%;
+}
+#mid {
+    background-color:#eee;
+    width:500px;
+    margin-left:-250px;
+    position:absolute;
+    top:0;
+    left:50%;    
+}
+
+#left,#right {
+    position:absolute;
+    top:0;
+    width:50%;
+}
+
+#left {
+    left:0;
+}
+
+#left .container {
+    margin-right:250px;
+    background-color:#bbb;
+}
+
+#right {
+    right:0;     
+}
+
+#right .container {
+    margin-left:250px;
+    background-color:#bbb;
+}
+</style>
+
+</head>
+<body>
+<div id="mid">
+    mid 宽度固定 : 500px
+</div>
+<div id="left">
+    <div class="container">left 宽度自适应</div>
+</div>
+<div id="right">
+    <div class="container">right 宽度自适应</div>
+</div>
+
+</body>
+</html>
+
